@@ -26,7 +26,6 @@ function chekProp(testObj) {
         console.log(`${testObj} <= это null`)
     }
     if (typeof testObj === 'string') {
-
         console.log(`${testObj} <= если точнее - это строка`)
     } else {
         for (let prop in testObj) {
