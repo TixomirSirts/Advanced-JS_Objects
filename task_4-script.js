@@ -1,35 +1,37 @@
 console.group(`Выполнение задания 4:`);
 
-function Device(name) {
+function Device(name, power) {
     this.name = name;
+    this.power = `${power} W`;
     this.type = 'electric';
     this.socketContact = false;
-    this.power = false;
-
+    this.current = false;
 }
 
-function BatteryDevice(name) {
+function BatteryDevice(name, power, batteryCapacity) {
     this.name = name;
+    this.power = `${power} W`;
+    this.batteryCapacity = `${batteryCapacity} mAh`;
     this.battery = true;
 }
 
 BatteryDevice.prototype = new Device();
 
-Device.prototype.switchPower = function (power = this.power) {
-    this.power = power;
-    if (this.power == true) {
-        this.power = false;
-        console.log(`The ${this.name}\'s power is OFF.`);
-        return power
+Device.prototype.switchCurrent = function (current = this.current) {
+    this.current = current;
+    if (this.current == true) {
+        this.current = false;
+        console.log(`The ${this.name}\'s current is OFF.`);
+        return current
     } else {
-        this.power = true;
-        console.log(`The ${this.name}\'s power is ON.`)
+        this.current = true;
+        console.log(`The ${this.name}\'s current is ON.`)
         if (this.socketContact == false) {
             console.log(`But plug is not in socket. If you want to use the ${this.name}, please, insert the plug into the socket.`)
         } else {
             console.log(`The ${this.name} is working!`)
         }
-        return power
+        return current
     }
 }
 
@@ -38,7 +40,7 @@ Device.prototype.switchPlug = function (socketContact = this.socketContact) {
     if (this.socketContact == true) {
         this.socketContact = false;
         console.log(`The plug of ${this.name} is unplugged.`);
-        if (this.power == true) {
+        if (this.current == true) {
             console.log(`The ${this.name} has turned off, because the plug has been unplugged.\nThe ${this.name} is not working.`);
         } else {
             console.log(`The ${this.name} is not working.`);
@@ -48,7 +50,7 @@ Device.prototype.switchPlug = function (socketContact = this.socketContact) {
     } else {
         this.socketContact = true;
         console.log(`The plug of the ${this.name} is inserted into the socket.`);
-        if (this.power == true) {
+        if (this.current == true) {
             console.log(`The ${this.name} is working!`);
         } else {
             console.log(`The ${this.name} is not working.`);
@@ -58,7 +60,7 @@ Device.prototype.switchPlug = function (socketContact = this.socketContact) {
 }
 
 Device.prototype.workingStatus = function () {
-    if (this.power == true && this.socketContact == true) {
+    if (this.current == true && this.socketContact == true) {
         console.log(`WorkStatus - ON: The ${this.name} is working!`);
     } else {
         console.log(`WorkStatus - OFF: The ${this.name} is not working.`);
@@ -71,7 +73,7 @@ BatteryDevice.prototype.switchPlug = function (socketContact = this.socketContac
         if (this.socketContact == true) {
             this.socketContact = false;
             console.log(`The plug of ${this.name} is unplugged.`);
-            if (this.power == true) {
+            if (this.current == true) {
                 console.log(`The ${this.name} has turned off, because the plug has been unplugged.\nThe ${this.name} is not working. Because battery is out too.`);
             } else {
                 console.log(`The ${this.name} is not working.`);
@@ -80,7 +82,7 @@ BatteryDevice.prototype.switchPlug = function (socketContact = this.socketContac
         } else {
             this.socketContact = true;
             console.log(`The plug of the ${this.name} is inserted into the socket.`);
-            if (this.power == true) {
+            if (this.current == true) {
                 console.log(`The ${this.name} is working!`);
             } else {
                 console.log(`The ${this.name} is not working.`);
@@ -91,19 +93,19 @@ BatteryDevice.prototype.switchPlug = function (socketContact = this.socketContac
         if (this.socketContact == true) {
             this.socketContact = false;
             console.log(`The plug of ${this.name} is unplugged.`);
-            if (this.power == true) {
+            if (this.current == true) {
                 console.log(`Even though the plug has been unplugged, the ${this.name} is working by battery.`);
             } else {
-                console.log(`The ${this.name} is NOT working, because power is OFF.`);
+                console.log(`The ${this.name} is NOT working, because current is OFF.`);
             }
             return socketContact
         } else {
             this.socketContact = true;
             console.log(`The plug of the ${this.name} is inserted into the socket.`);
-            if (this.power == true) {
+            if (this.current == true) {
                 console.log(`It does not matter, because the ${this.name} is working by battery!`);
             } else {
-                console.log(`The ${this.name} is NOT working, because power is OFF.`);
+                console.log(`The ${this.name} is NOT working, because current is OFF.`);
             }
             return socketContact
         }
@@ -112,54 +114,54 @@ BatteryDevice.prototype.switchPlug = function (socketContact = this.socketContac
 
 BatteryDevice.prototype.workingStatus = function () {
     if (this.battery == false) {
-        if (this.power == true && this.socketContact == true) {
+        if (this.current == true && this.socketContact == true) {
             console.log(`WorkStatus - ON: The ${this.name} is working without battery from the mains.`);
         } else {
             console.log(`WorkStatus - OFF: The ${this.name} is not working. Battery is out. Plug is out of socket.`);
         }
     } else {
-        if (this.power == true) {
+        if (this.current == true) {
             if (this.socketContact == true) {
                 console.log(`WorkStatus - ON: The ${this.name} is working from the mains. Battery is charging.`);
             } else {
                 console.log(`WorkStatus ON: The ${this.name} is working off the mains by battery.`);
             }
         } else {
-            console.log(`WorkStatus - OFF: The ${this.name} is not working, because power is OFF.`);
+            console.log(`WorkStatus - OFF: The ${this.name} is not working, because current is OFF.`);
         }
     }
 }
 
 
-const lamp = new Device('lamp');
-const humidifier = new Device('humidifier');
-const notebook = new BatteryDevice('notebook', true);
+const lamp = new Device('lamp', 60);
+const humidifier = new Device('humidifier', 70);
+const notebook = new BatteryDevice('notebook', 100, 3600);
 
 
 // Функция для тетирования работы электро приборов
 
 function checkDevice(device) {
     console.warn(device);
-    // device.workingStatus();
-    device.switchPlug();
-    device.switchPower();
     device.workingStatus();
-    // device.switchPlug();
-    // device.switchPower();
-    // device.workingStatus();
+    device.switchPlug();
+    device.switchCurrent();
+    device.workingStatus();
+    device.switchPlug();
+    device.switchCurrent();
+    device.workingStatus();
     console.log(``);
 }
 
 
 // Проверка работы лампы и увлажнителя
 
-// checkDevice(lamp);
-// checkDevice(humidifier);
+checkDevice(lamp);
+checkDevice(humidifier);
 
 
 // Проверка работы ноутбука
 
-// checkDevice(notebook);
+checkDevice(notebook);
 
 
 // Проверка работы ноутбука без батареи
