@@ -154,3 +154,20 @@ checkDevice(notebook);
 
 // notebook.battery = false;
 // checkDevice(notebook);
+
+lamp.switchColor = function(lightColor = light) {
+    this.lightColor = lightColor;
+    console.log(`The ${this.name} emits ${this.lightColor}`);
+}
+
+console.log(lamp);
+lamp.switchColor('daylight');
+
+
+notebook.switchKeyboardColor = function(lightColor = white) {
+    this.lightColor = lightColor;
+    console.log(`Keys of ${this.name} glow ${this.lightColor}`);
+}
+
+console.log(notebook);
+notebook.switchKeyboardColor('blue');
