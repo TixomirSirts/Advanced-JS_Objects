@@ -119,7 +119,7 @@ BatteryDevice.prototype.workingStatus = function () {
         }
     } else {
         if (this.power == true) {
-            if(this.socketContact == true) {
+            if (this.socketContact == true) {
                 console.log(`WorkStatus - ON: The ${this.name} is working from the mains. Battery is charging.`);
             } else {
                 console.log(`WorkStatus ON: The ${this.name} is working off the mains by battery.`);
@@ -135,39 +135,84 @@ const lamp = new Device('lamp');
 const humidifier = new Device('humidifier');
 const notebook = new BatteryDevice('notebook', true);
 
+
+// Функция для тетирования работы электро приборов
+
 function checkDevice(device) {
     console.warn(device);
-    device.workingStatus();
+    // device.workingStatus();
     device.switchPlug();
     device.switchPower();
     device.workingStatus();
-    device.switchPlug();
-    device.switchPower();
-    device.workingStatus();
+    // device.switchPlug();
+    // device.switchPower();
+    // device.workingStatus();
     console.log(``);
 }
+
+
+// Проверка работы лампы и увлажнителя
 
 // checkDevice(lamp);
 // checkDevice(humidifier);
 
-checkDevice(notebook);
+
+// Проверка работы ноутбука
+
+// checkDevice(notebook);
+
+
+// Проверка работы ноутбука без батареи
 
 // notebook.battery = false;
 // checkDevice(notebook);
 
-lamp.switchColor = function(lightColor = light) {
+
+// Функция смены цвета для лампы
+
+lamp.switchColor = function (lightColor = light) {
     this.lightColor = lightColor;
     console.log(`The ${this.name} emits ${this.lightColor}`);
 }
 
-console.log(lamp);
-lamp.switchColor('daylight');
+// console.log(lamp);
+// lamp.switchColor('daylight');
 
 
-notebook.switchKeyboardColor = function(lightColor = white) {
-    this.lightColor = lightColor;
-    console.log(`Keys of ${this.name} glow ${this.lightColor}`);
+// Функция смены цвета посветки клавиатуры
+
+notebook.switchKeyboardColor = function (keysLightColor = white) {
+    this.keysLightColor = keysLightColor;
+    console.log(`Keys of ${this.name} glow ${this.keysLightColor}`);
 }
 
-console.log(notebook);
-notebook.switchKeyboardColor('blue');
+// console.log(notebook);
+// notebook.switchKeyboardColor('blue');
+
+
+// Функция смены режимов увлажнителя
+
+humidifier.switchOperatingMode = function (operatingMode = this.operatingMode) {
+    this.operatingMode = operatingMode;
+    if (this.operatingMode != 'light' && this.operatingMode != 'medium' && this.operatingMode != 'heavy') {
+        this.operatingMode = 'light';
+        console.log(`The ${this.name}\'s operating mode is ${this.operatingMode}.`);
+    } else {
+        if (this.operatingMode == 'light') {
+            this.operatingMode = 'medium';
+            console.log(`The ${this.name}\'s operating mode switched to ${this.operatingMode}.`);
+        } else if (this.operatingMode == 'medium') {
+            this.operatingMode = 'heavy';
+            console.log(`The ${this.name}\'s operating mode switched to ${this.operatingMode}.`);
+        } else if (this.operatingMode == 'heavy') {
+            this.operatingMode = 'light';
+            console.log(`The ${this.name}\'s operating mode switched to ${this.operatingMode}.`);
+        }
+    }
+}
+
+// console.log(humidifier);
+// humidifier.switchOperatingMode();
+// humidifier.switchOperatingMode();
+// humidifier.switchOperatingMode();
+// humidifier.switchOperatingMode();
