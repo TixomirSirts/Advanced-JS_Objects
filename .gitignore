@@ -2,6 +2,6 @@ README.md
 
 tasks-discription.md
 
-task_[5]*.js
+!task_[1-5]*.js
 
-index.html
+!index.html
