@@ -15,3 +15,12 @@
 ___
 
 ## ***Задание 3.***
+
+```bush
+console.group(`Выполнение задания 3:`);
+
+const emptyObj1 = () => Object.create(null);
+
+let Var_a = emptyObj1();
+console.log(Var_a);
+```

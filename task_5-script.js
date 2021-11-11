@@ -212,6 +212,8 @@ humidifier.switchOperatingMode = function (operatingMode = this.operatingMode) {
     }
 }
 
+// Тестирование работы увлажнителя
+
 // console.log(humidifier);
 // humidifier.switchOperatingMode();
 // humidifier.switchOperatingMode();
