@@ -1,6 +1,6 @@
-# ***Advanced object work JS***
+# ***Advanced JS: Objects***
 
-## **Продвинутая работа с объектами в JS**
+## **Продвинутый JavaScript: Объекты**
 
 ## **Содеражние:**
 
@@ -24,3 +24,5 @@ const emptyObj1 = () => Object.create(null);
 let Var_a = emptyObj1();
 console.log(Var_a);
 ```
+
+### *Автор исполнения кода TixomirSirts*

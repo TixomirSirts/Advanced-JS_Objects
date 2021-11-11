@@ -1,6 +1,6 @@
-# ***Advanced object work JS***
+# ***Advanced JS: Objects***
 
-## **Продвинутая работа с объектами в JS**
+## **Продвинутый JavaScript: Объекты**
 
 ## **Содеражние:**
 
@@ -240,3 +240,5 @@ humidifier.switchOperatingMode = function (operatingMode = this.operatingMode) {
 // humidifier.switchOperatingMode();
 // humidifier.switchOperatingMode();
 ```
+
+### *Автор исполнения кода TixomirSirts*

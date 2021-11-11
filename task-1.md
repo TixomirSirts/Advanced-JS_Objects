@@ -1,6 +1,6 @@
-# ***Advanced object work JS***
+# ***Advanced JS: Objects***
 
-## **Продвинутая работа с объектами в JS**
+## **Продвинутый JavaScript: Объекты**
 
 ## **Содеражние:**
 
@@ -68,3 +68,5 @@ chekProp(null);
 chekProp(NaN);
 chekProp(undefined);
 ```
+
+### *Автор исполнения кода TixomirSirts*
